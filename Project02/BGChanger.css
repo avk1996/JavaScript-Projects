@@ -1,0 +1,26 @@
+#box {
+  flex: auto;
+  align-items: center;
+}
+.button {
+  margin: 10px;
+  height: 50px;
+  width: 50px;
+}
+#grey {
+  background-color: gray;
+  border-color: black;
+}
+#blue {
+  background-color: blue;
+  border-color: black;
+}
+#green {
+  background-color: green;
+  border-color: black;
+}
+#red {
+  background-color: red;
+  border-color: black;
+}
+/* style="background-color: coral; width: fit-content; flex-direction: row" */
