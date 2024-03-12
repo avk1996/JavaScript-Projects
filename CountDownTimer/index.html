@@ -8,7 +8,34 @@
   </head>
   <body>
     <div class="main">
-      <div class="overlay"></div>
+      <div class="overlay">
+        <div class="title">
+          <h1>Your wait will be over on</h1>
+          <h2 id="end-date"></h2>
+          <div class="countdown">
+            <div>
+              <input type="text" id="days" readonly value="0" />
+              <br />
+              <label for="days">Days</label>
+            </div>
+            <div>
+              <input type="text" id="hours" readonly value="0" />
+              <br />
+              <label for="hours">Hours</label>
+            </div>
+            <div>
+              <input type="text" id="minutes" readonly value="0" />
+              <br />
+              <label for="minutes">Minutes</label>
+            </div>
+            <div>
+              <input type="text" id="seconds" readonly value="0" />
+              <br />
+              <label for="seconds">Seconds</label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="js/app.js"></script>
