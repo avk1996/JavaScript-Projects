@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BackGround changer</title>
   </head>
-  <body>
-    <div>
+  <body style="transition: 1s">
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      "
+    >
       <h1
         style="
           background-color: wheat;
@@ -16,12 +23,40 @@
           border-radius: 10px;
         "
       ></h1>
-      <button style="background-color: green; border-radius: 10px" id="start">
-        Start
-      </button>
-      <button style="background-color: red; border-radius: 10px" id="stop">
-        Stop
-      </button>
+      <div
+        style="
+          border: 1px solid black;
+          width: fit-content;
+          background-color: white;
+          border-radius: 5px;
+        "
+        id="color-code"
+      ></div>
+      <br />
+      <div style="">
+        <button
+          style="
+            background-color: green;
+            border-radius: 20px;
+            color: antiquewhite;
+            font-size: x-large;
+          "
+          id="start"
+        >
+          Start
+        </button>
+        <button
+          style="
+            background-color: red;
+            border-radius: 20px;
+            color: antiquewhite;
+            font-size: x-large;
+          "
+          id="stop"
+        >
+          Stop
+        </button>
+      </div>
     </div>
   </body>
   <script src="BackGroundChanger.js"></script>
