@@ -51,7 +51,9 @@
           <label for="opt-d">Option</label>
         </div>
         <div class="submit-section">
-          <button class="previous" onclick="goBack()">Previous</button>
+          <button class="previous" id="previous" onclick="goBack()">
+            Previous
+          </button>
           <button
             type="submit"
             class="answer"
@@ -60,8 +62,11 @@
           >
             Submit
           </button>
-          <button class="next" onclick="toNext()">Next</button>
+          <button class="next" id="next" onclick="toNext()">Next</button>
         </div>
+      </div>
+      <div id="end">
+        <button id="try-again" onclick="backToQuiz()"></button>
       </div>
     </div>
   </body>

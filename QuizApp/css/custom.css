@@ -3,6 +3,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+body {
+}
+
 .main {
   background: url("https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
     center center;
@@ -19,7 +23,7 @@
 .quiz-section {
   background-color: rgba(0, 0, 0, 0.7);
   width: 40%;
-  height: 250px;
+  height: 270px;
   border: 1px white solid;
   border-radius: 10px;
   padding: 10px;
@@ -32,6 +36,7 @@
   box-sizing: border-box;
   background-color: white;
   border-radius: 10px;
+  font-size: larger;
 }
 .answer-a,
 .answer-b,
@@ -42,6 +47,7 @@
   border-radius: 10px;
   width: fit-content;
   background-color: white;
+  font-size: larger;
 }
 .submit-section {
   display: flex;
@@ -51,13 +57,14 @@
 }
 .answer,
 .next,
-.previous {
+.previous,
+.score {
   /* display: flex;
   flex-direction: row;
   justify-content: space-evenly; */
   border: none;
   font-size: larger;
-  background-color: antiquewhite;
+
   font-family: Georgia, "Times New Roman", Times, serif;
   border-radius: 5px;
 }
@@ -72,4 +79,11 @@
 .previous {
   width: 30%;
   height: 30px;
+}
+#try-again {
+  padding: 10px;
+  margin-top: 10px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
 }
