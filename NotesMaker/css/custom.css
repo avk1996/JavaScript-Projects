@@ -71,7 +71,8 @@ button:hover {
   color: white;
   border: seashell;
 }
-.addbtn {
+.addbtn,
+.autosave {
   height: 50px;
   width: 100px;
 }
