@@ -13,15 +13,15 @@ addTaskBtn.addEventListener("click", () => {
 });
 
 const addTask = (task) => {
-  const taskList = document.createElement("div");
+  const taskList = document.createElement("tr");
   taskList.innerHTML = `
-  <div>${task}</div>
-  <div><button id="edit">edit</button></div>
-  <div><button id="delete">delete</button></div>
+      <td>${task}</td>
+      <td><button id="edit">edit</button></td>
+      <td><button id="delete">delete</button></td>
   `;
   // <input type="text" id="edit-text"/>
-
-  toDoBox.appendChild(taskList);
+  toDoBox.querySelector(".task-list table").appendChild(taskList);
+  // toDoBox.appendChild(taskList);
 
   const deleteTask = taskList.querySelector("#delete");
   deleteTask.addEventListener("click", () => {
