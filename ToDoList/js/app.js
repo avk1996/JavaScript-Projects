@@ -15,7 +15,7 @@ addTaskBtn.addEventListener("click", () => {
 const addTask = (task) => {
   const taskList = document.createElement("tr");
   taskList.innerHTML = `
-      <td>${task}</td>
+      <td class="task">${task}</td>
       <td><button id="edit">edit</button></td>
       <td><button id="delete">delete</button></td>
   `;

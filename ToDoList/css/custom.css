@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  transition: 1s;
+}
+
 .main,
 .task-layout {
   display: flex;
@@ -27,6 +31,10 @@
   border-radius: 10px;
 }
 
+.task-layout:hover {
+  box-shadow: 10px 10px;
+}
+
 .task-input {
   width: 90%;
   height: 20%;
@@ -34,6 +42,11 @@
   padding: 1px;
   border-radius: 20px;
   background-color: rgb(88, 55, 178);
+}
+
+.task-input:hover {
+  box-shadow: 10px 10px;
+  background-color: rgb(240, 230, 35);
 }
 
 .task-text {
@@ -101,10 +114,22 @@
 
 td {
   padding: 5px;
+  font-size: larger;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .task-given {
   width: fit-content;
   height: fit-content;
   background-color: wheat;
+}
+
+.task {
+  width: fit-content;
+  background-color: rgb(80, 14, 80, 0.7);
+  border-radius: 10px;
+}
+
+.task:hover {
+  transform: scale(1.5);
 }

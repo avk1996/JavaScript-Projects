@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/custom.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="cal-layout">
+        <div class="io-div">
+          <table class="io-table">
+            <tr>
+              <td colspan="4">
+                <input class="screen" />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center">
+                <button id="ac">AC</button>
+              </td>
+              <td colspan="2" align="center">
+                <button id="del">DEL</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button id="7">7</button>
+              </td>
+              <td>
+                <button id="8">8</button>
+              </td>
+              <td>
+                <button id="9">9</button>
+              </td>
+              <td>
+                <button id="/" onclick="division()">/</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button id="6">6</button>
+              </td>
+              <td>
+                <button id="5">5</button>
+              </td>
+              <td>
+                <button id="4">4</button>
+              </td>
+              <td>
+                <button id="*" onclick="product()">*</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button id="3">3</button>
+              </td>
+              <td>
+                <button id="2">2</button>
+              </td>
+              <td>
+                <button id="1">1</button>
+              </td>
+              <td>
+                <button id="-" onclick="difference()">-</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button id="0">0</button>
+              </td>
+              <td>
+                <button id=".">.</button>
+              </td>
+              <td>
+                <button id="=">=</button>
+              </td>
+              <td>
+                <button id="+" onclick="add()">+</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="js/app.js"></script>
+</html>
