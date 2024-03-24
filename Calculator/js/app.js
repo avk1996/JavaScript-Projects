@@ -7,25 +7,17 @@ Array.from(buttons).forEach((button) => {
     console.log(`clicked: ${e.target.textContent}`);
     inputs += e.target.textContent;
     if (selectChar === "=") {
-      let result = 0;
-      const operandOne = inputs[0];
-      const operator = inputs[1];
-      const operandTwo = inputs[2];
-      console.log(`${operandOne}, ${operator}, ${operandTwo}`);
-      if (operator === "+") {
-        result = add(operandOne, operandTwo);
-      } else if (operator === "-") {
-        result = difference(operandOne, operandTwo);
-      } else if (operator === "*") {
-        result = product(operandOne, operandTwo);
-      } else if (operator === "/") {
-        result = division(operandOne, operandTwo).toPrecision(4);
-      }
-      console.log("result: " + result);
-      inPutValue(result);
+      inputs = evaluates(inputs);
+      inPutValue(inputs);
     } else if (selectChar === "DEL") {
+      inputs = inputs.replace("DEL", "");
+      const lastChar = inputs.slice(-1);
+      console.log(lastChar);
+      inputs = inputs.replace(lastChar, "");
+      inPutValue(inputs);
     } else if (selectChar === "AC") {
       inPutValue("");
+      inputs = "";
     } else {
       inPutValue(inputs);
     }
@@ -50,4 +42,34 @@ const product = (a, b) => {
 const division = (a, b) => {
   console.log("you pressed division");
   return parseFloat(a / b);
+};
+
+const evaluates = (string) => {
+  string = string.replace("=", "");
+
+  let operandOne = 0;
+  let operandTwo = 0;
+
+  let operation = [];
+  if (string.includes("+")) {
+    operation = string.split("+");
+    console.log(operation);
+    operandOne = parseFloat(operation[0]);
+    operandTwo = parseFloat(operation[1]);
+    return add(operandOne, operandTwo);
+  } else if (string.includes("-")) {
+    operation = string.split("-");
+    console.log(operation);
+    return difference(operation[0], operation[1]);
+  } else if (string.includes("/")) {
+    operation = string.split("/");
+    console.log(operation);
+    return division(operation[0], operation[1]);
+  } else if (string.includes("*")) {
+    operation = string.split("*");
+    console.log(operation);
+    return product(operation[0], operation[1]);
+  } else {
+    console.log("wrong");
+  }
 };
