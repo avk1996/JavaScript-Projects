@@ -64,11 +64,11 @@ const evaluates = (string) => {
   } else if (string.includes("/")) {
     operation = string.split("/");
     console.log(operation);
-    return division(operation[0], operation[1]);
+    return division(operation[0], operation[1]).toPrecision(5);
   } else if (string.includes("*")) {
     operation = string.split("*");
     console.log(operation);
-    return product(operation[0], operation[1]);
+    return product(operation[0], operation[1]).toPrecision(5);
   } else {
     console.log("wrong");
   }

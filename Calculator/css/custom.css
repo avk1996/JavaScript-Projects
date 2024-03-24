@@ -3,11 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+body {
+  transition: 0.5s;
+}
 .main {
-  width: 50%;
-  height: 60%;
-  background-color: blue;
+  background-color: cyan;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,4 +19,53 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+button {
+  height: 40px;
+  width: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 15px;
+  border-color: white;
+  font-size: larger;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 300;
+  transform: background-color 1000ms, ease-in-out, color 1000ms ease-in-out;
+}
+
+button:hover,
+#ac:hover,
+#del:hover,
+#div:hover,
+#pro:hover,
+#sum:hover,
+#diff:hover {
+  background-color: green;
+  color: white;
+}
+
+#ac {
+  width: 100px;
+  background-color: red;
+  color: white;
+}
+
+#del {
+  width: 100px;
+  background-color: blue;
+  color: white;
+}
+
+#div,
+#pro,
+#sum,
+#diff {
+  background-color: orange;
+  color: white;
+}
+
+.screen {
+  width: ;
 }
