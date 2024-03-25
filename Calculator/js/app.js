@@ -2,6 +2,7 @@ const buttons = document.querySelectorAll("button");
 let inputs = "";
 
 Array.from(buttons).forEach((button) => {
+  console.log(button);
   button.addEventListener("click", (e) => {
     const selectChar = e.target.textContent;
     console.log(`clicked: ${e.target.textContent}`);
@@ -65,10 +66,12 @@ const evaluates = (string) => {
     operation = string.split("/");
     console.log(operation);
     return division(operation[0], operation[1]).toPrecision(5);
-  } else if (string.includes("*")) {
-    operation = string.split("*");
+  } else if (string.includes("x")) {
+    operation = string.split("x");
     console.log(operation);
-    return product(operation[0], operation[1]).toPrecision(5);
+    const pro = product(operation[0], operation[1]);
+    if (operation.includes(".")) return pro.toPrecision(5);
+    else return pro;
   } else {
     console.log("wrong");
   }
