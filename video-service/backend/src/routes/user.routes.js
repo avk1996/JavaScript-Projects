@@ -6,7 +6,7 @@ const router = Router();
 
 // because of this below route the link is further modified for post
 // 2. http://localhost:port/api/v1/users/register
-router.route("/register").post(registerUser);
+router.route("/register").get(registerUser);
 
 // 2. http://localhost:port/users/login
 // router.route("/login").post(loginUser);
