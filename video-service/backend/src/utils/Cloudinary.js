@@ -1,7 +1,7 @@
 import cloudinary from "cloudinary";
 import fs from "fs"; // file system for file handling inheriently given with nodejs
 
-import { v2 as cloudinary } from "cloudinary";
+import { v2 } from "cloudinary";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -31,3 +31,5 @@ const uploadOnCloudinary = async (localFilePath) => {
     fs.unlinkSync(localFilePath);
   }
 };
+
+export { uploadOnCloudinary };

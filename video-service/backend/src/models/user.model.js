@@ -1,4 +1,4 @@
-import moongoose, { Schema } from "moongoose";
+import { Schema, model } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
@@ -7,7 +7,7 @@ const userSchema = new Schema(
     userName: {
       type: String,
       required: true,
-      uniquie: true,
+      unique: true,
       lowercase: true,
       trim: true,
       // usefull for searching but affects performance how?
@@ -16,7 +16,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
-      uniquie: true,
+      unique: true,
       lowercase: true,
       trim: true,
     },
@@ -59,7 +59,7 @@ userSchema.pre("save", async function (next) {
   // if field is modified then don't need to encryp the password again
   if (!this.isModified(this.password)) return;
 
-  this.password = bcrypt.hash(this.password, 10);
+  this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 
@@ -97,4 +97,4 @@ userSchema.methods.generateRefreshToken = function () {
   );
 };
 
-export const User = moongoose.model("User", userSchema);
+export const User = model("User", userSchema);
