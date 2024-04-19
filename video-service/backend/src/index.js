@@ -2,7 +2,7 @@
 import dotenv from "dotenv";
 import connectDB from "./db/dbconnect.js";
 import app from "./app.js";
-dotenv.config({ path: "./env" });
+dotenv.config({ path: "./.env" });
 
 connectDB()
   .then(() => {
@@ -15,7 +15,7 @@ connectDB()
     app.on("error", () => {
       console.log(`Error: ${error}`);
       throw error;
-    }); 
+    });
   })
   .catch(() => {
     console.log("Mongodb connection failed in index.js");

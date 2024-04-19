@@ -53,11 +53,11 @@ const userSchema = new Schema(
 );
 
 // password encyption using bcrypt
-
+// console.log("in user module");
 // when we try to save user data just before that the password is encrypted
 userSchema.pre("save", async function (next) {
   // if field is modified then don't need to encryp the password again
-  if (!this.isModified(this.password)) return;
+  if (!this.isModified("password")) return;
 
   this.password = await bcrypt.hash(this.password, 10);
   next();
@@ -65,6 +65,7 @@ userSchema.pre("save", async function (next) {
 
 // password checking using bcrypt
 
+// console.log("in user module");
 userSchema.methods.isPasswordCorrect = async function (password) {
   // retuns if the password is correct or not
   return await bcrypt.compare(password, this.password);
