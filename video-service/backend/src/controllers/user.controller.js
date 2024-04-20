@@ -3,6 +3,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
+import jwt from "jsonwebtoken";
 
 const registerUser = asyncyHandler(async (req, resp) => {
   // 1. take username, email, fullName, password from reqest
@@ -93,8 +94,8 @@ const generateAccessAndRefreshToken = async (userId) => {
   try {
     const currentUser = await User.findById(userId);
 
-    const accessToken = await isUserExist.generateAccessToken();
-    const refreshToken = await isUserExist.generateRefreshToken();
+    const accessToken = await currentUser.generateAccessToken();
+    const refreshToken = await currentUser.generateRefreshToken();
 
     currentUser.refreshToken = refreshToken;
 
@@ -115,7 +116,7 @@ const loginUser = asyncyHandler(async (req, resp) => {
   console.log(userName, " ", email);
 
   // 2. check for empty fields
-  if (!userName || !email)
+  if (!(userName || email))
     throw new ApiError(400, "Username or email required");
 
   if (!password) throw new ApiError(400, "Password is required");
@@ -198,4 +199,52 @@ const logOutUser = asyncyHandler(async (req, resp) => {
     .json(new ApiResponse(200, {}, "user logged out successfully"));
 });
 
-export { registerUser, loginUser, logOutUser };
+const refreshAccessToken = asyncyHandler(async (req, resp) => {
+  try {
+    // first we will take refresh token from cookies or if mobile app. is there then from body
+    const incomingRefreshToken =
+      req.cookies.refreshToken || req.body.refreshToken;
+
+    // then we check if the token is autherized or not
+    if (incomingRefreshToken) throw new ApiError(401, "Unauthorize request");
+
+    // we will decode the token which was initially created/generated using payload _id
+    const decodedIncomingRefreshToken = jwt.verify(
+      incomingRefreshToken,
+      process.env.REFRESH_TOKEN_SECRET
+    );
+
+    // now decoded refresh token has id then we simply fire nosql query to find user
+    const currentUser = await User.findById(decodedIncomingRefreshToken?._id);
+
+    // if user does not exist or fictitious then throw error
+    if (!currentUser) throw new ApiError(401, "Invalid Refresh Token");
+
+    // now we match the token
+    if (incomingRefreshToken !== currentUser?.refreshToken)
+      throw new ApiError(401, "Refresh Token is expired or used");
+
+    const options = {
+      httpOnly: true,
+      secure: true,
+    };
+
+    const { accessToken, newRefreshToken } =
+      await generateAccessAndRefreshToken(currentUser._id);
+
+    return resp(200)
+      .cookie("accessToken", accessToken, options)
+      .cookie("refreshToken", newRefreshToken, options)
+      .json(
+        new ApiResponse(
+          200,
+          { accessToken, refreshToken: newRefreshToken },
+          "New token generated"
+        )
+      );
+  } catch (error) {
+    return new ApiError(401, error?.message || "Invalid Refresh Token");
+  }
+});
+
+export { registerUser, loginUser, logOutUser, refreshAccessToken };

@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   logOutUser,
   loginUser,
+  refreshAccessToken,
   registerUser,
 } from "../controllers/user.controller.js";
 
@@ -34,5 +35,8 @@ router.route("/login").post(loginUser);
 // secured routes
 // http://localhost:port/api/v1/users/logout
 router.route("/logout").post(verifyJWT, logOutUser);
+
+// http://localhost:port/api/v1/users/refresh-token
+router.route("/refresh-token").post(refreshAccessToken);
 
 export default router;
