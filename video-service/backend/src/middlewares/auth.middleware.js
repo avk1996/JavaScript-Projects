@@ -1,7 +1,7 @@
-import { ApiError } from "../utils/ApiError";
-import { asyncyHandler } from "../utils/asychHandler";
+import { ApiError } from "../utils/ApiError.js";
+import { User } from "../models/user.model.js";
 import jwt from "jsonwebtoken";
-import { User } from "../models/user.model";
+import { asyncyHandler } from "../utils/asychHandler.js";
 
 // we use underscore to indicate that we are not using this parameter but we required to put there
 export const verifyJWT = asyncyHandler(async (req, _, next) => {

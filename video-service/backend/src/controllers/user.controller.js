@@ -110,11 +110,15 @@ const generateAccessAndRefreshToken = async (userId) => {
 
 const loginUser = asyncyHandler(async (req, resp) => {
   // 1. take username or email and password from user
+  console.log(req.body);
   const { userName, email, password } = req.body;
+  console.log(userName, " ", email);
 
   // 2. check for empty fields
   if (!userName || !email)
     throw new ApiError(400, "Username or email required");
+
+  if (!password) throw new ApiError(400, "Password is required");
 
   // 3. check if the username or email exists
   const userIfExists = await User.findOne({
@@ -124,8 +128,6 @@ const loginUser = asyncyHandler(async (req, resp) => {
   if (!userIfExists) throw new ApiError(400, "User does not exists");
 
   // 4. verify password
-  if (!password) throw new ApiError(400, "Password is required");
-
   const isValidPassword = await userIfExists.isPasswordCorrect(password);
 
   if (!isValidPassword) throw new ApiError(401, "Password Incorrect");

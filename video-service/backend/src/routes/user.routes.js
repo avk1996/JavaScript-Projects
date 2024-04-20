@@ -32,6 +32,7 @@ router.route("/register").post(
 router.route("/login").post(loginUser);
 
 // secured routes
+// http://localhost:port/api/v1/users/logout
 router.route("/logout").post(verifyJWT, logOutUser);
 
 export default router;
