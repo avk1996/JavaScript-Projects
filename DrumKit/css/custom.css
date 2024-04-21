@@ -1,0 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.main {
+  width: 100%;
+  height: 100vh;
+  background: url("https://cdn.pixabay.com/photo/2016/01/14/06/09/woman-1139397_1280.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  border-color: black;
+  margin: 10px;
+  border: none;
+  font-family: monospace;
+  font-weight: bolder;
+  font-size: xx-large;
+  color: white;
+  height: 75px;
+  width: 75px;
+}
+
+span {
+  font-size: small;
+  color: rgb(230, 202, 75);
+  font-weight: lighter;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+span:hover {
+  color: red;
+}
