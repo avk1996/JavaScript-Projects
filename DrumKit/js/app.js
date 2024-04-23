@@ -1,3 +1,6 @@
+const mainPage = document.querySelector(".errorArea");
+const errorDiv = document.createElement("div");
+
 const playSound = (e) => {
   // storing to referece audio in tag audio
   const audio = document.querySelector(`audio[data-key="${e.key}"]`);
@@ -19,6 +22,8 @@ const playSound = (e) => {
   audio.play();
 
   key.classList.add("playing");
+
+  removeError();
 };
 
 window.addEventListener("keydown", playSound);
@@ -38,7 +43,21 @@ keys.forEach((key) => {
 
 function errorKeyPressed() {
   console.log("Error key pressed");
-  const errorDiv = document.createElement("div");
   errorDiv.className = "wrongKey";
+
+  errorDiv.innerHTML = `
+  <h1>Wrong key pressed</h1>
+  `;
+
+  mainPage.appendChild(errorDiv);
+
+  setTimeout(() => {
+    mainPage.removeChild(errorDiv);
+  }, 2000);
+
   console.log(errorDiv);
+}
+
+function removeError() {
+  mainPage.removeChild(errorDiv);
 }
