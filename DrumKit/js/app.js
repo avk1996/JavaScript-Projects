@@ -2,12 +2,12 @@ const mainPage = document.querySelector(".errorArea");
 const errorDiv = document.createElement("div");
 
 const playSound = (e) => {
-  // storing to referece audio in tag audio
+  // storing to referece audio in audio tag
   const audio = document.querySelector(`audio[data-key="${e.key}"]`);
+  console.log(audio);
 
-  // for animating the key
+  // for animating the key, tags returned related to this key
   const key = document.querySelector(`.key[data-key="${e.key}"]`);
-
   // if key is not present in audio set
   if (!audio) {
     errorKeyPressed();
@@ -23,7 +23,7 @@ const playSound = (e) => {
 
   key.classList.add("playing");
 
-  removeError();
+  // removeError();
 };
 
 window.addEventListener("keydown", playSound);
@@ -42,7 +42,7 @@ keys.forEach((key) => {
 });
 
 function errorKeyPressed() {
-  console.log("Error key pressed");
+  // console.log("Error key pressed");
   errorDiv.className = "wrongKey";
 
   errorDiv.innerHTML = `
