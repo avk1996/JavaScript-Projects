@@ -8,6 +8,7 @@ import jwt from "jsonwebtoken";
 const registerUser = asyncyHandler(async (req, resp) => {
   // 1. take username, email, fullName, password from reqest
 
+  console.log(req.body, req.files);
   const { userName, email, fullName, password } = req.body;
   // console.log(`Email: ${email}, Password: ${password}`);
 
@@ -27,13 +28,14 @@ const registerUser = asyncyHandler(async (req, resp) => {
 
   if (existingUser)
     throw new ApiError(409, "User email or username already exists");
-
   // 4. check for avatar, take avatar and coverimage from request
 
   // console.log(req.files);
 
+  // just like express gives us fields with body multer gives us fields by files
   const avatarLocalPath = req.files?.avatar[0]?.path;
   // const coverImgLocalPath = req.files?.coverImage[0]?.path;
+  console.log(avatarLocalPath);
 
   let coverImgLocalPath;
 
@@ -111,7 +113,7 @@ const generateAccessAndRefreshToken = async (userId) => {
 
 const loginUser = asyncyHandler(async (req, resp) => {
   // 1. take username or email and password from user
-  console.log(req.body);
+  // console.log(req.body);
   const { userName, email, password } = req.body;
   console.log(userName, " ", email);
 

@@ -7,6 +7,8 @@ import { asyncyHandler } from "../utils/asychHandler.js";
 export const verifyJWT = asyncyHandler(async (req, _, next) => {
   try {
     // if from client side unable to send cookies if user is using mobile application so access token is taken from header
+
+    console.log(`cookies: ${req.cookies.accessToken}`);
     const token =
       req.cookies?.accessToken ||
       req.header("Authorization ")?.replace("Bearer ", "");
