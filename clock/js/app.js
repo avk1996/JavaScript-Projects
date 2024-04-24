@@ -4,7 +4,7 @@ const hourHand = document.querySelector(".hour-hand");
 
 const setDate = () => {
   const now = new Date();
-  console.log(now);
+  // console.log(now);
   const seconds = now.getSeconds();
   const degreeSeconds = (seconds / 60) * 360 + 90;
   secondHand.style.transform = `rotate(${degreeSeconds}deg)`;
