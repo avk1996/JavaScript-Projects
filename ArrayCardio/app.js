@@ -95,9 +95,7 @@ console.log("Sort by first name");
 inventors.sort((a, b) => {
   const fname1 = a.first.toLowerCase();
   const fname2 = b.first.toLowerCase();
-  if (fname1 > fname2) return 1;
-  else if (fname1 < fname2) return -1;
-  return 0;
+  return fname1 > fname2 ? 1 : -1;
 });
 console.table(inventors);
 
