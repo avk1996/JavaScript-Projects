@@ -11,41 +11,105 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url("https://images.pexels.com/photos/3194518/pexels-photo-3194518.jpeg?auto=compress&cs=tinysrgb&w=600") center center;
-    background-size: cover;
+    background-color: #0b0f19;
+    /* Deep, luxury midnight obsidian blue */
+    font-family: system-ui, -apple-system, sans-serif;
 }
 
+.title {
+    color: white;
+    font-size: 60px;
+    display: inline-block;
+    margin-bottom: 10px;
+    /* Shrinks container box tightly to letters */
+    transition: all 0.4s ease-in-out;
+}
+
+.title:hover {
+    background: linear-gradient(45deg, #ff007f, #7f00ff, #00f0ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(127, 0, 255, 0.5));
+}
+
+/* --- THE GRID rows FIXED --- */
 .row1,
 .row2,
 .row3 {
-    width: 300px;
+    width: 330px;
     height: 100px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    /* Evenly spaces the 3 blocks */
+    margin-bottom: 15px;
+    /* Adds space between vertical rows */
 }
 
-.row1>div,
-.row2>div,
-.row3>div {
-    width: 100px;
-    border: 2px solid black;
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: white;
-    transition: transform 0.3s ease, box-shadow 0.3s
-}
-
-.row1>div:hover,
-.row2>div:hover,
-.row3>div:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
+/* --- FIXED CELL STYLING (Merged into one selector) --- */
 .pos {
+    width: 100px;
+    /* Locks structural width */
+    height: 100px;
+    /* Locks structural height so it CANNOT expand on click */
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 3rem;
+    /* Perfectly sized for a 100px box */
+    font-weight: bold;
+    cursor: pointer;
+
+    /* Luxury Glassmorphic Aesthetic (Replaced the hard white background) */
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+
+    /* Initial state color for text characters */
+    color: rgba(255, 255, 255, 0.9);
+
+    position: relative;
+    z-index: 1;
+
+    /* Ultra-smooth transition for hover lift and background blends */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- HOVER EFFECTS --- */
+.pos:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+    /* Premium clean lift up */
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.reset {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    color: #00f2fe;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    border-radius: 8px;
+
+    transition: all 0.2s ease-in-out;
+}
+
+/* When you hover over the button */
+.reset:hover {
+    background-color: #185659;
+    color: #e9edf8;
+}
+
+/* When you physically click the button */
+.reset:active {
+    transform: scale(0.95);
+    /* Slightly shrinks to show a real button press */
 }
