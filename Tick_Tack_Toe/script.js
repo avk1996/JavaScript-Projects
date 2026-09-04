@@ -33,7 +33,7 @@ cells.forEach(cell => {
         if(this.textContent === ''){
             this.currentPlayer = currentPlayer
             let nextPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            divsTask(nextPlayer)
+            divsTask(nextPlayer);
             this.style.color = currentPlayer === 'X' ? 'green' : 'orange';
             this.textContent = currentPlayer
             this.style.fontSize = "4rem"
